@@ -1,7 +1,7 @@
 {
   "name": "snyk-lab-tienda",
-  "version": "1.0.0",
-  "description": "Aplicación de laboratorio INTENCIONALMENTE VULNERABLE para la práctica 5 (Snyk CLI) - Windows. Solo para uso local.",
+  "version": "1.1.0",
+  "description": "Aplicación de laboratorio - versión corregida (práctica 5, Snyk CLI, Windows). Solo para uso local.",
   "main": "app.js",
   "private": true,
   "scripts": {
@@ -13,8 +13,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "express": "4.17.1",
-    "lodash": "4.17.20"
+    "express": "^4.21.2",
+    "lodash": "^4.17.23"
   },
   "engines": {
     "node": ">=22.13"

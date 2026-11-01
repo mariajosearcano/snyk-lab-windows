@@ -1,0 +1,200 @@
+﻿Testing  (package-lock.json) ...
+
+Tested 51 dependencies for known issues, found 21 issues, 27 vulnerable paths.
+
+Open Security issues: 21
+
+ Γ£ù [LOW] Cross-site Scripting
+   Finding ID: SNYK-JS-SEND-7926862
+   Info: https://snyk.io/vuln/SNYK-JS-SEND-7926862
+   Introduced by: send
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > send@0.17.1
+
+ Γ£ù [LOW] Cross-site Scripting
+   Finding ID: SNYK-JS-SERVESTATIC-7926865
+   Info: https://snyk.io/vuln/SNYK-JS-SERVESTATIC-7926865
+   Introduced by: serve-static
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > serve-static@1.14.1
+
+ Γ£ù [MEDIUM] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-BODYPARSER-17906397
+   Info: https://snyk.io/vuln/SNYK-JS-BODYPARSER-17906397
+   Introduced by: body-parser
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > body-parser@1.19.0
+
+ Γ£ù [MEDIUM] Cross-site Scripting (XSS)
+   Finding ID: SNYK-JS-COOKIE-8163060
+   Info: https://snyk.io/vuln/SNYK-JS-COOKIE-8163060
+   Introduced by: cookie
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > cookie@0.4.0
+
+ Γ£ù [MEDIUM] Open Redirect
+   Finding ID: SNYK-JS-EXPRESS-6474509
+   Info: https://snyk.io/vuln/SNYK-JS-EXPRESS-6474509
+   Introduced by: express
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1
+
+ Γ£ù [MEDIUM] Cross-site Scripting
+   Finding ID: SNYK-JS-EXPRESS-7926867
+   Info: https://snyk.io/vuln/SNYK-JS-EXPRESS-7926867
+   Introduced by: express
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1
+
+ Γ£ù [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-LODASH-1018905
+   Info: https://snyk.io/vuln/SNYK-JS-LODASH-1018905
+   Introduced by: lodash
+   Introduced through: snyk-lab-tienda@1.0.0 > lodash@4.17.20
+
+ Γ£ù [MEDIUM] Prototype Pollution
+   Finding ID: SNYK-JS-LODASH-15053838
+   Info: https://snyk.io/vuln/SNYK-JS-LODASH-15053838
+   Introduced by: lodash
+   Introduced through: snyk-lab-tienda@1.0.0 > lodash@4.17.20
+
+ Γ£ù [MEDIUM] Prototype Pollution
+   Finding ID: SNYK-JS-LODASH-15869619
+   Info: https://snyk.io/vuln/SNYK-JS-LODASH-15869619
+   Introduced by: lodash
+   Introduced through: snyk-lab-tienda@1.0.0 > lodash@4.17.20
+
+ Γ£ù [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-PATHTOREGEXP-15789761
+   Info: https://snyk.io/vuln/SNYK-JS-PATHTOREGEXP-15789761
+   Introduced by: path-to-regexp
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > path-to-regexp@0.1.7
+
+ Γ£ù [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-PATHTOREGEXP-7925106
+   Info: https://snyk.io/vuln/SNYK-JS-PATHTOREGEXP-7925106
+   Introduced by: path-to-regexp
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > path-to-regexp@0.1.7
+
+ Γ£ù [MEDIUM] Regular Expression Denial of Service (ReDoS)
+   Finding ID: SNYK-JS-PATHTOREGEXP-8482416
+   Info: https://snyk.io/vuln/SNYK-JS-PATHTOREGEXP-8482416
+   Introduced by: path-to-regexp
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > path-to-regexp@0.1.7
+
+ Γ£ù [MEDIUM] Uncaught Exception
+   Finding ID: SNYK-JS-QS-19432019
+   Info: https://snyk.io/vuln/SNYK-JS-QS-19432019
+   Introduced by: qs
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0
+
+ Γ£ù [HIGH] Uncaught Exception
+   Finding ID: SNYK-JS-BODYPARSER-21431495
+   Info: https://snyk.io/vuln/SNYK-JS-BODYPARSER-21431495
+   Introduced by: body-parser
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > body-parser@1.19.0
+
+ Γ£ù [HIGH] Asymmetric Resource Consumption (Amplification)
+   Finding ID: SNYK-JS-BODYPARSER-7926860
+   Info: https://snyk.io/vuln/SNYK-JS-BODYPARSER-7926860
+   Introduced by: body-parser
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > body-parser@1.19.0
+
+ Γ£ù [HIGH] Code Injection
+   Finding ID: SNYK-JS-LODASH-1040724
+   Info: https://snyk.io/vuln/SNYK-JS-LODASH-1040724
+   Introduced by: lodash
+   Introduced through: snyk-lab-tienda@1.0.0 > lodash@4.17.20
+
+ Γ£ù [HIGH] Arbitrary Code Injection
+   Finding ID: SNYK-JS-LODASH-15869625
+   Info: https://snyk.io/vuln/SNYK-JS-LODASH-15869625
+   Introduced by: lodash
+   Introduced through: snyk-lab-tienda@1.0.0 > lodash@4.17.20
+
+ Γ£ù [HIGH] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-QS-14724253
+   Info: https://snyk.io/vuln/SNYK-JS-QS-14724253
+   Introduced by: qs
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0
+
+ Γ£ù [HIGH] Allocation of Resources Without Limits or Throttling
+   Finding ID: SNYK-JS-QS-15268416
+   Info: https://snyk.io/vuln/SNYK-JS-QS-15268416
+   Introduced by: qs
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0
+
+ Γ£ù [HIGH] Uncaught Exception
+   Finding ID: SNYK-JS-QS-20943482
+   Info: https://snyk.io/vuln/SNYK-JS-QS-20943482
+   Introduced by: qs
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0
+
+ Γ£ù [HIGH] Prototype Poisoning
+   Finding ID: SNYK-JS-QS-3153490
+   Info: https://snyk.io/vuln/SNYK-JS-QS-3153490
+   Introduced by: qs
+   Introduced through: snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0
+
+Issues to fix by upgrading:
+
+  Upgrade express@4.17.1 to express@4.22.3 to fix
+  Γ£ù Cross-site Scripting [LOW] [https://security.snyk.io/vuln/SNYK-JS-SEND-7926862] in send@0.17.1
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > send@0.17.1 and 1 other path
+  Γ£ù Cross-site Scripting [LOW] [https://security.snyk.io/vuln/SNYK-JS-SERVESTATIC-7926865] in serve-static@1.14.1
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > serve-static@1.14.1
+  Γ£ù Allocation of Resources Without Limits or Throttling [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-17906397] in body-parser@1.19.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > body-parser@1.19.0
+  Γ£ù Cross-site Scripting (XSS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-COOKIE-8163060] in cookie@0.4.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > cookie@0.4.0
+  Γ£ù Open Redirect [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-EXPRESS-6474509] in express@4.17.1
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1
+  Γ£ù Cross-site Scripting [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-EXPRESS-7926867] in express@4.17.1
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1
+  Γ£ù Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-PATHTOREGEXP-15789761] in path-to-regexp@0.1.7
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > path-to-regexp@0.1.7
+  Γ£ù Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-PATHTOREGEXP-7925106] in path-to-regexp@0.1.7
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > path-to-regexp@0.1.7
+  Γ£ù Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-PATHTOREGEXP-8482416] in path-to-regexp@0.1.7
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > path-to-regexp@0.1.7
+  Γ£ù Uncaught Exception [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-QS-19432019] in qs@6.7.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0 and 1 other path
+  Γ£ù Uncaught Exception [HIGH] [https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-21431495] in body-parser@1.19.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > body-parser@1.19.0
+  Γ£ù Asymmetric Resource Consumption (Amplification) [HIGH] [https://security.snyk.io/vuln/SNYK-JS-BODYPARSER-7926860] in body-parser@1.19.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > body-parser@1.19.0
+  Γ£ù Allocation of Resources Without Limits or Throttling [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-14724253] in qs@6.7.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0 and 1 other path
+  Γ£ù Allocation of Resources Without Limits or Throttling [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-15268416] in qs@6.7.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0 and 1 other path
+  Γ£ù Uncaught Exception [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-20943482] in qs@6.7.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0 and 1 other path
+  Γ£ù Prototype Poisoning [HIGH] [https://security.snyk.io/vuln/SNYK-JS-QS-3153490] in qs@6.7.0
+    introduced by snyk-lab-tienda@1.0.0 > express@4.17.1 > qs@6.7.0 and 1 other path
+
+  Upgrade lodash@4.17.20 to lodash@4.18.1 to fix
+  Γ£ù Regular Expression Denial of Service (ReDoS) [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-LODASH-1018905] in lodash@4.17.20
+    introduced by snyk-lab-tienda@1.0.0 > lodash@4.17.20
+  Γ£ù Prototype Pollution [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-LODASH-15053838] in lodash@4.17.20
+    introduced by snyk-lab-tienda@1.0.0 > lodash@4.17.20
+  Γ£ù Prototype Pollution [MEDIUM] [https://security.snyk.io/vuln/SNYK-JS-LODASH-15869619] in lodash@4.17.20
+    introduced by snyk-lab-tienda@1.0.0 > lodash@4.17.20
+  Γ£ù Code Injection [HIGH] [https://security.snyk.io/vuln/SNYK-JS-LODASH-1040724] in lodash@4.17.20
+    introduced by snyk-lab-tienda@1.0.0 > lodash@4.17.20
+  Γ£ù Arbitrary Code Injection [HIGH] [https://security.snyk.io/vuln/SNYK-JS-LODASH-15869625] in lodash@4.17.20
+    introduced by snyk-lab-tienda@1.0.0 > lodash@4.17.20
+
+Γò¡ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò«
+Γöé Test Summary                                                                                                           Γöé
+Γöé                                                                                                                        Γöé
+Γöé   Organization:      mariajosearcano                                                                                   Γöé
+Γöé   Test type:         Software Composition Analysis                                                                     Γöé
+Γöé   Project name:      snyk-lab-tienda                                                                                   Γöé
+Γöé   Project path:      C:\Users\Usuario\OneDrive - Design Systems Inno S.A.S\Documents\CYBERSECURITY\snyk-lab-windows    Γöé
+Γöé   Target file:       package-lock.json                                                                                 Γöé
+Γöé                                                                                                                        Γöé
+Γöé   Total security issues: 21                                                                                            Γöé
+Γöé   Ignored: 0 [ 0 CRITICAL  0 HIGH  0 MEDIUM  0 LOW ]                                                                   Γöé
+Γöé   Open   : 21 [ 0 CRITICAL  8 HIGH  11 MEDIUM  2 LOW ]                                                                 Γöé
+Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
+
+
+≡ƒÆí Tip
+
+   To view ignored issues, use the --include-ignores option.
+                                                            
+

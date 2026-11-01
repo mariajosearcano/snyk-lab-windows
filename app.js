@@ -1,30 +1,27 @@
 // =====================================================================
-//  APLICACIÓN DE LABORATORIO - INTENCIONALMENTE VULNERABLE (ANTES)
+//  APLICACIÓN DE LABORATORIO - VERSIÓN CORREGIDA (DESPUÉS)
 //  Práctica 5: Implementación Práctica Snyk CLI - versión Windows
-//  NO desplegar en internet. Ejecutar solo en localhost.
 // =====================================================================
 const express = require("express");
-const { DatabaseSync } = require("node:sqlite"); // SQLite incluido en Node 22 (no hay que compilar nada)
-const { exec } = require("child_process");
+const { DatabaseSync } = require("node:sqlite");
+const { execFile } = require("child_process");
 const crypto = require("crypto");
 const _ = require("lodash");
+const { escapeHtml, hostValido, usuarioValido } = require("./lib/seguridad");
 
 const app = express();
 app.use(express.json());
 
-// ---------------------------------------------------------------------
-// [VULN 4 - SAST] Secreto quemado en el código (CWE-798)
-// ---------------------------------------------------------------------
-const TOKEN_SECRET = "clave-super-secreta-123";
+// [FIX VULN 4] El secreto se lee de una variable de entorno, no del código.
+// Si no existe, se genera uno aleatorio por ejecución (solo para el laboratorio).
+const TOKEN_SECRET = process.env.TOKEN_SECRET || crypto.randomBytes(32).toString("hex");
 
-// Base de datos en memoria con datos de prueba (ficticios)
 const db = new DatabaseSync(":memory:");
-db.exec(`
-  CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, role TEXT);
-  INSERT INTO users (username, password, role) VALUES ('admin', 'Adm1n#Lab', 'admin');
-  INSERT INTO users (username, password, role) VALUES ('ana', 'Ana#2026', 'user');
-  INSERT INTO users (username, password, role) VALUES ('luis', 'Luis#2026', 'user');
-`);
+db.exec("CREATE TABLE users (id INTEGER PRIMARY KEY, username TEXT, password TEXT, role TEXT)");
+const insertar = db.prepare("INSERT INTO users (username, password, role) VALUES (?, ?, ?)");
+insertar.run("admin", "Adm1n#Lab", "admin");
+insertar.run("ana", "Ana#2026", "user");
+insertar.run("luis", "Luis#2026", "user");
 
 function firmarToken(username) {
   return crypto.createHmac("sha256", TOKEN_SECRET).update(username).digest("hex");
@@ -34,68 +31,53 @@ app.get("/", (req, res) => {
   res.send("Snyk Lab funcionando. Rutas: POST /login, GET /users?name=, GET /search?q=, GET /ping?host=");
 });
 
-// ---------------------------------------------------------------------
-// [VULN 1 - SAST] Inyección SQL (CWE-89) -> OWASP A05:2025 Injection
-// La entrada del usuario se concatena directamente en la consulta.
-// Payload de prueba: {"username":"admin'--","password":"x"}
-// ---------------------------------------------------------------------
+// [FIX VULN 1] Consulta parametrizada: los "?" hacen que la entrada se trate
+// como DATO y nunca como parte del código SQL. Además se valida el formato.
 app.post("/login", (req, res) => {
-  const { username, password } = req.body;
-  const query =
-    "SELECT id, username, role FROM users WHERE username = '" +
-    username +
-    "' AND password = '" +
-    password +
-    "'";
+  const { username, password } = req.body || {};
+  if (!usuarioValido(username) || typeof password !== "string") {
+    return res.status(400).json({ ok: false, mensaje: "Entrada inválida" });
+  }
   try {
-    const row = db.prepare(query).get();
+    const query = "SELECT id, username, role FROM users WHERE username = ? AND password = ?";
+    const row = db.prepare(query).get(username, password);
     if (!row) return res.status(401).json({ ok: false, mensaje: "Credenciales inválidas" });
     res.json({ ok: true, usuario: row.username, rol: row.role, token: firmarToken(row.username) });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+  } catch {
+    res.status(500).json({ error: "Error interno" }); // no se filtran detalles
   }
 });
 
-// Misma debilidad en una consulta de búsqueda.
-// Payload de prueba: /users?name=' OR '1'='1
-// Además usa _.trim de lodash 4.17.20 sobre entrada del usuario
-// (función afectada por CVE-2020-28500, ReDoS) -> la dependencia es "reachable".
 app.get("/users", (req, res) => {
-  const name = _.trim(req.query.name || "");
-  const query = "SELECT id, username, role FROM users WHERE username = '" + name + "'";
+  const name = _.trim(String(req.query.name || "")); // lodash ya actualizado
+  if (!usuarioValido(name)) return res.status(400).json({ error: "Nombre inválido" });
   try {
-    res.json(db.prepare(query).all());
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.json(db.prepare("SELECT id, username, role FROM users WHERE username = ?").all(name));
+  } catch {
+    res.status(500).json({ error: "Error interno" });
   }
 });
 
-// ---------------------------------------------------------------------
-// [VULN 2 - SAST] XSS reflejado (CWE-79) -> OWASP A05:2025 Injection
-// Payload de prueba: /search?q=<script>alert('XSS')</script>
-// ---------------------------------------------------------------------
+// [FIX VULN 2] Se codifica la salida HTML: <script> se muestra como texto.
 app.get("/search", (req, res) => {
-  const q = req.query.q || "";
+  const q = escapeHtml(req.query.q || "");
   res.send("<h1>Resultados para: " + q + "</h1><p>No se encontraron productos.</p>");
 });
 
-// ---------------------------------------------------------------------
-// [VULN 3 - SAST] Inyección de comandos del SO (CWE-78)
-// En Windows exec() usa cmd.exe, donde "&" y "|" encadenan comandos.
-// Payload de prueba (solo local): /ping?host=127.0.0.1 %26 whoami
-// ---------------------------------------------------------------------
+// [FIX VULN 3] execFile NO usa shell ("&", "|", ";" no se interpretan)
+// y además se valida el host con lista blanca.
 const PING_COUNT = process.platform === "win32" ? "-n" : "-c";
 app.get("/ping", (req, res) => {
-  const host = req.query.host || "127.0.0.1";
-  exec("ping " + PING_COUNT + " 1 " + host, (err, stdout, stderr) => {
-    res.type("text/plain").send(stdout || stderr || (err && err.message));
+  const host = String(req.query.host || "127.0.0.1");
+  if (!hostValido(host)) return res.status(400).type("text/plain").send("Host inválido");
+  execFile("ping", [PING_COUNT, "1", host], { timeout: 5000 }, (err, stdout, stderr) => {
+    res.type("text/plain").send(stdout || stderr || "Sin respuesta");
   });
 });
 
 const PORT = process.env.PORT || 3000;
 if (require.main === module) {
-  // Se escucha SOLO en localhost para no exponer el laboratorio a la red.
-  app.listen(PORT, "127.0.0.1", () => console.log(`Snyk Lab (VULNERABLE) en http://127.0.0.1:${PORT}`));
+  app.listen(PORT, "127.0.0.1", () => console.log(`Snyk Lab (CORREGIDO) en http://127.0.0.1:${PORT}`));
 }
 
 module.exports = app;
