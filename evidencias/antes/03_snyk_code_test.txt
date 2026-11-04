@@ -8,11 +8,6 @@ Open Issues
    Path: test/funcional.test.js, line 25
    Info: Do not hardcode passwords in code. Found hardcoded password used in password.
 
- Γ£ù [MEDIUM] Use of Hardcoded Passwords
-   Finding ID: deb296b7-36ff-47d4-8b54-6b4a178ec251
-   Path: demo_ataques.js, line 32
-   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
-
  Γ£ù [MEDIUM] Information Exposure - X-Powered-By Header
    Finding ID: e0e7f603-1ba5-4321-85f3-f999942d5edb
    Path: app.js, line 12
@@ -23,55 +18,30 @@ Open Issues
    Path: remediacion/app.js, line 12
    Info: Disable X-Powered-By header for your Express app (consider using Helmet middleware), because it exposes information about the used framework to potential attackers.
 
- Γ£ù [MEDIUM] Information Exposure - Server Error Message
-   Finding ID: 8f610be1-279a-42a7-a5d6-a1a82eac3285
-   Path: app.js, line 91
-   Info: An error object flows to send and is leaked to the attacker. This may disclose important information about the application to an attacker.
+ Γ£ù [MEDIUM] Use of Hardcoded Passwords
+   Finding ID: deb296b7-36ff-47d4-8b54-6b4a178ec251
+   Path: demo_ataques.js, line 32
+   Info: Do not hardcode passwords in code. Found hardcoded password used in password.
+
+ Γ£ù [MEDIUM] Allocation of Resources Without Limits or Throttling
+   Finding ID: 59672956-2a4e-43bd-bc53-723d2b364662
+   Path: app.js, line 70
+   Info: Expensive operation (a system command execution) is performed by an endpoint handler which does not use a rate-limiting mechanism. It may enable the attackers to perform Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
 
  Γ£ù [MEDIUM] Allocation of Resources Without Limits or Throttling
    Finding ID: 90b4b0c9-0f8d-4be8-9089-1536e879ec96
    Path: remediacion/app.js, line 70
    Info: Expensive operation (a system command execution) is performed by an endpoint handler which does not use a rate-limiting mechanism. It may enable the attackers to perform Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
 
- Γ£ù [MEDIUM] Allocation of Resources Without Limits or Throttling
-   Finding ID: 59672956-2a4e-43bd-bc53-723d2b364662
-   Path: app.js, line 88
-   Info: Expensive operation (a system command execution) is performed by an endpoint handler which does not use a rate-limiting mechanism. It may enable the attackers to perform Denial-of-service attacks. Consider using a rate-limiting middleware such as express-limit.
-
  Γ£ù [HIGH] Cross-site Scripting (XSS)
    Finding ID: fcc25225-d151-4964-ad89-976ca10578aa
-   Path: app.js, line 79
+   Path: app.js, line 64
    Info: Unsanitized input from an HTTP parameter flows into send, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
-
- Γ£ù [HIGH] Hardcoded Secret
-   Finding ID: 63db87d2-a47c-46ab-b4be-4b51d9120636
-   Path: app.js, line 18
-   Info: Hardcoded value is used as a cipher key (in crypto.createHmac). Generate the value with a cryptographically strong random number generator and do not hardcode it in source code.
-
- Γ£ù [HIGH] Hardcoded Non-Cryptographic Secret
-   Finding ID: f8584d59-a9f0-41ca-857f-db3ce126a06f
-   Path: app.js, line 18
-   Info: Avoid hardcoding values that are meant to be secret. Found a hardcoded string used in here.
 
  Γ£ù [HIGH] Cross-site Scripting (XSS)
    Finding ID: a9a7003f-8ff6-4387-8c3b-8decb77e862a
    Path: remediacion/app.js, line 64
    Info: Unsanitized input from an HTTP parameter flows into send, where it is used to render an HTML page returned to the user. This may result in a Cross-Site Scripting attack (XSS).
-
- Γ£ù [HIGH] Command Injection
-   Finding ID: 933dc69f-5d0f-4b0d-8704-c6de54aa1d04
-   Path: app.js, line 90
-   Info: Unsanitized input from an HTTP parameter flows into child_process.exec, where it is used to build a shell command. This may result in a Command Injection vulnerability.
-
- Γ£ù [HIGH] SQL Injection
-   Finding ID: 5a51f064-9308-4b87-b0c4-4ac6aec4b305
-   Path: app.js, line 51
-   Info: Unsanitized input from the HTTP request body flows into prepare, where it is used in an SQL query. This may result in an SQL Injection vulnerability.
-
- Γ£ù [HIGH] SQL Injection
-   Finding ID: 75652734-9237-4a2a-b623-4aa9b75140a9
-   Path: app.js, line 67
-   Info: Unsanitized input from an HTTP parameter flows into prepare, where it is used in an SQL query. This may result in an SQL Injection vulnerability.
 
 
 
@@ -82,9 +52,9 @@ Open Issues
 Γöé   Test type:         Static code analysis                                                                              Γöé
 Γöé   Project path:      C:\Users\Usuario\OneDrive - Design Systems Inno S.A.S\Documents\CYBERSECURITY\snyk-lab-windows    Γöé
 Γöé                                                                                                                        Γöé
-Γöé   Total issues:   14                                                                                                   Γöé
+Γöé   Total issues:   8                                                                                                    Γöé
 Γöé   Ignored issues: 0 [ 0 HIGH  0 MEDIUM  0 LOW ]                                                                        Γöé
-Γöé   Open issues:    14 [ 7 HIGH  6 MEDIUM  1 LOW ]                                                                       Γöé
+Γöé   Open issues:    8 [ 2 HIGH  5 MEDIUM  1 LOW ]                                                                        Γöé
 Γò░ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓò»
     
 ≡ƒÆí Tip

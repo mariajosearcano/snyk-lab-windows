@@ -7,7 +7,8 @@ const { DatabaseSync } = require("node:sqlite");
 const { execFile } = require("child_process");
 const crypto = require("crypto");
 const _ = require("lodash");
-const { escapeHtml, hostValido, usuarioValido } = require("./lib/seguridad");
+const escapeHtml = require("escape-html"); // libreria estandar de escape HTML (la usa Express)
+const { hostValido, usuarioValido } = require("./lib/seguridad");
 
 const app = express();
 app.use(express.json());

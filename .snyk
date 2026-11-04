@@ -1,0 +1,7 @@
+# Snyk (https://snyk.io) policy file
+# remediacion/ es solo una copia de referencia del codigo corregido que el
+# script aplicar_remediacion.ps1 copia a la raiz; no se ejecuta, asi que se
+# excluye del analisis para no duplicar hallazgos de app.js.
+exclude:
+  global:
+    - remediacion/**

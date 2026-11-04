@@ -7,7 +7,7 @@ rules:
     mode: taint
     message: >
       Entrada del usuario llega a una consulta SQL (CWE-89, OWASP A05:2025).
-      Usa consultas parametrizadas: db.get("... WHERE x = ?", [valor], cb)
+      Usa consultas parametrizadas: db.prepare("... WHERE x = ?").get(valor)
     severity: ERROR
     languages: [javascript]
     pattern-sources:
@@ -21,7 +21,7 @@ rules:
           - focus-metavariable: $SQL
           - metavariable-regex:
               metavariable: $M
-              regex: ^(get|all|run|each|exec|prepare|query)$
+              regex: ^(prepare|exec)$  # get/all reciben VALORES parametrizados, no SQL
 
   - id: xss-entrada-usuario
     mode: taint
