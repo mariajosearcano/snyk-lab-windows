@@ -22,7 +22,7 @@
   },
   "license": "UNLICENSED",
   "devDependencies": {
-    "eslint": "^9.0.0",
+    "eslint": "^10.14.0",
     "eslint-plugin-security": "^3.0.1"
   }
 }
